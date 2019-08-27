@@ -12,17 +12,22 @@ Vagrant.configure("2") do |config|
 
   # Every Vagrant development environment requires a box. You can search for
   # boxes at https://vagrantcloud.com/search.
-  config.vm.define "web_1" do |web_1|
-    web_1.vm.box = "generic/ubuntu1804"
+  config.vm.define "web1" do |web1|
+    web1.vm.box = "generic/ubuntu1804"
+    web1.vm.network :private_network, ip: "192.168.33.10"
+    web1.vm.provider "virtualbox" do |v|
+      v.name = "Coors Light 1"
+    end
+    
   end
-  config.vm.define "web_2" do |web_2|
-    web_2.vm.box = "generic/ubuntu1804"
+  config.vm.define "web2" do |web2|
+    web2.vm.box = "generic/ubuntu1804"
   end
-  config.vm.define "web_3" do |web_3|
-    web_3.vm.box = "generic/ubuntu1804"
+  config.vm.define "web3" do |web3|
+    web3.vm.box = "generic/ubuntu1804"
   end
-  config.vm.define "web_4" do |web_4|
-    web_4.vm.box = "generic/ubuntu1804"
+  config.vm.define "web4" do |web4|
+    web4.vm.box = "generic/ubuntu1804"
   end
   # Disable automatic box update checking. If you disable this, then
   # boxes will only be checked for updates when the user runs
@@ -44,10 +49,10 @@ Vagrant.configure("2") do |config|
   # using a specific IP.
   # config.vm.network "private_network", ip: "192.168.33.10"
   
-  config.web_1.network "private_network", ip: "192.168.33.10"
-  config.web_2.network "private_network", ip: "192.168.33.11"
-  config.web_3.network "private_network", ip: "192.168.33.12"
-  config.web_4.network "private_network", ip: "192.168.33.13"
+  # config.web_1.network "private_network", ip: "192.168.33.10"
+  # config.web_2.network "private_network", ip: "192.168.33.11"
+  # config.web_3.network "private_network", ip: "192.168.33.12"
+  # config.web_4.network "private_network", ip: "192.168.33.13"
 
   # Create a public network, which generally matched to bridged network.
   # Bridged networks make the machine appear as another physical device on
