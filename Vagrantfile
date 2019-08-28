@@ -15,19 +15,41 @@ Vagrant.configure("2") do |config|
   config.vm.define "web1" do |web1|
     web1.vm.box = "generic/ubuntu1804"
     web1.vm.network :private_network, ip: "192.168.33.10"
+    
     web1.vm.provider "virtualbox" do |v|
       v.name = "Coors Light 1"
+      web1.vm.provision :shell, path: "Bootstrap.sh"
+      web1.vm.synced_folder ".", "/vagrant"
+
     end
     
   end
   config.vm.define "web2" do |web2|
     web2.vm.box = "generic/ubuntu1804"
+    web2.vm.network :private_network, ip: "192.168.33.11"
+    web2.vm.provider "virtualbox" do |v|
+      v.name = "Coors Light 2"
+      web2.vm.provision :shell, path: "Bootstrap.sh"
+      web2.vm.synced_folder ".", "/vagrant"
+    end
   end
   config.vm.define "web3" do |web3|
     web3.vm.box = "generic/ubuntu1804"
+    web3.vm.network :private_network, ip: "192.168.33.12"
+    web3.vm.provider "virtualbox" do |v|
+      v.name = "Coors Light 3"
+      web3.vm.provision :shell, path: "Bootstrap.sh"
+      web3.vm.synced_folder ".", "/vagrant"
+    end
   end
   config.vm.define "web4" do |web4|
     web4.vm.box = "generic/ubuntu1804"
+    web4.vm.network :private_network, ip: "192.168.33.13"
+    web4.vm.provider "virtualbox" do |v|
+      v.name = "Coors Light 4"
+      web4.vm.provision :shell, path: "Bootstrap.sh"
+      web4.vm.synced_folder ".", "/vagrant"
+    end
   end
   # Disable automatic box update checking. If you disable this, then
   # boxes will only be checked for updates when the user runs
